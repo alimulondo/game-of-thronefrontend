@@ -1,9 +1,13 @@
 import React, { useEffect } from "react"
+import NavHead from "./NavHead"
+import House from "./House"
 
 function Home() {
   return (
     <>
-      <p> This is a home component</p>
+        <NavHead />
+
+        <House />
     </>
   )
 }
