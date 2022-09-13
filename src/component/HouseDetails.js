@@ -5,60 +5,60 @@ import React, { useEffect } from "react"
 function HouseDetails(details) {
   return (
     <>
-<div class="list-group mt-5">
-  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Name</h5>
+<div className="list-group mt-5">
+  <a href="#" className="list-group-item list-group-item-action active" aria-current="true">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Name</h5>
     </div>
-    <p class="mb-1">{details.name}</p>
+    <p className="mb-1">{details.name}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Region </h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Region </h5>
     </div>
-    <p class="mb-1">{details.region}</p>
+    <p className="mb-1">{details.region}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Words</h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Words</h5>
     </div>
-    <p class="mb-1">{details.words}</p>
+    <p className="mb-1">{details.words}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Coat Of Arms</h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Coat Of Arms</h5>
     </div>
-    <p class="mb-1">{details.coatOfArms}</p>
+    <p className="mb-1">{details.coatOfArms}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Current Lord</h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Current Lord</h5>
     </div>
-    <p class="mb-1">{details.currentLord}</p>
+    <p className="mb-1">{details.currentLord}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Heir</h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Heir</h5>
     </div>
-    <p class="mb-1">{details.heir}</p>
+    <p className="mb-1">{details.heir}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Overlord</h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Overlord</h5>
     </div>
-    <p class="mb-1">{details.overlord}</p>
+    <p className="mb-1">{details.overlord}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Founded</h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Founded</h5>
     </div>
-    <p class="mb-1">{details.founded}</p>
+    <p className="mb-1">{details.founded}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Died Out</h5>
+  <a href="#" className="list-group-item list-group-item-action">
+    <div className="d-flex w-100 justify-content-between">
+      <h5 className="mb-1">Died Out</h5>
     </div>
-    <p class="mb-1">{details.diedOut}</p>
+    <p className="mb-1">{details.diedOut}</p>
   </a>
 </div>
 

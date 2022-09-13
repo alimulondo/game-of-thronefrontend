@@ -1,17 +1,6 @@
 import React, { useEffect } from "react"
-import NavHead from "./NavHead"
-import House from "./House"
 import HouseDetails from "./HouseDetails"
 import HouseSubDetails from "./HouseSubDetails"
-
-
-const houses =[
-        {"name":"House Ambrose", "region":"The Reach","words": "Never Resting", "id":4},
-        {"name":"House Arryn of Gulltown", "region":"The North","words": "The Vale", "id":6},
-        {"name":"House Ashwood", "region":"The North","words": "", "id":9},
-        {"name":"House Ashwood", "region":"The North","words": "", "id":10},
-
-]
 
 const house =  {"id": "78",
 "name": "House Condon",
@@ -38,13 +27,13 @@ const house =  {"id": "78",
 ]
 }
 
-function Home() {
+
+function SingleHouse() {
   return (
     <>
-        <NavHead />
-        <div className="container">
+      <div className="container">
 
-        <div className="row">
+      <div className="row">
         <HouseDetails  name = {house.name} region = {house.region} 
         coatOfArms = {house.coatOfArms} currentLord = {house.heir} 
         overlord = {house.overlord} founded = {house.founded} diedOut = {house.diedOut}
@@ -89,20 +78,10 @@ function Home() {
            
         </div>
         
-        <div className="row">
+      </div>
 
-        {houses.map((house)=>{
-          return <House name = {house.name} region = {house.region} words = {house.words} key = {house.id} />;
-        })}
-        </div>
-        </div>
-        
-        
-       
-
-        
     </>
   )
 }
 
-export default Home
+export default SingleHouse

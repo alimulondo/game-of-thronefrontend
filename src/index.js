@@ -3,11 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
+import NavHead from './component/NavHead';
+import Houses from './component/Houses';
+import SingleHouse from './component/SingleHouse';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <NavHead />
+        <Routes>
+           <Route path="/" element = { <Houses />} />
+           <Route path ="/45" element = { <SingleHouse /> } />
+        </Routes>
+    
+    </BrowserRouter>
+    
   </React.StrictMode>
 );
 
