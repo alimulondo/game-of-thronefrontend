@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import NavHead from "./NavHead"
 import House from "./House"
 import HouseDetails from "./HouseDetails"
+import HouseSubDetails from "./HouseSubDetails"
 
 const houses =[
         {"name":"House Ambrose", "region":"The Reach","words": "Never Resting", "id":4},
@@ -40,13 +41,63 @@ function Home() {
   return (
     <>
         <NavHead />
+        <div className="container">
+
+        <div className="row">
         <HouseDetails  name = {house.name} region = {house.region} 
         coatOfArms = {house.coatOfArms} currentLord = {house.heir} 
         overlord = {house.overlord} founded = {house.founded} diedOut = {house.diedOut}
         />
+        </div>
+        <div className="row"> 
+           <div className="col"> 
+           <h4>Titles</h4> 
+           {house.titles.map((val)=>{
+              return <HouseSubDetails element = {val} />
+           })}
+           </div>
+           <div className="col"> 
+           <h4>Seats</h4> 
+           {house.seats.map((val)=>{
+              return <HouseSubDetails element = {val} />
+           })}
+           </div>
+        </div>
+        <div className="row"> 
+           <div className="col"> 
+           <h4>Ancestral Weapons</h4> 
+           {house.ancestralWeapons.map((val)=>{
+              return <HouseSubDetails element = {val} />
+           })}
+           </div>
+           <div className="col"> 
+           <h4>Cadet Branches</h4> 
+           {house.cadetBranches.map((val)=>{
+              return <HouseSubDetails element = {val} />
+           })}
+           </div>
+        </div>
+
+        <div className="row"> 
+           <div className="col"> 
+           <h4>Sworn Members</h4> 
+           {house.swornMembers.map((val)=>{
+              return <HouseSubDetails element = {val} />
+           })}
+           </div>
+           
+        </div>
+        
+        <div className="row">
+
         {houses.map((house)=>{
-           return <House name = {house.name} region = {house.region} words = {house.words} id = {house.id}/>;
+          return <House name = {house.name} region = {house.region} words = {house.words} key = {house.id} />;
         })}
+        </div>
+        </div>
+        
+        
+       
 
         
     </>

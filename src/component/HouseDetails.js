@@ -62,6 +62,8 @@ function HouseDetails(details) {
   </a>
 </div>
 
+
+
     </>
   )
 }
