@@ -5,7 +5,8 @@ import React, { useEffect } from "react"
 function House(props) {
   return (
     <>
-      
+
+          
  <div className="card w-100 mt-5">
   <div className="card-body">
     <h5 className="card-title">{props.name}</h5>
