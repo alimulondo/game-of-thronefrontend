@@ -1,4 +1,32 @@
 import React, { useEffect } from "react"
+import  NavEntry  from './NavEntry';
+
+const searchOptions = [
+        {"Name": "name"},
+        {"Region": "region"},
+        {"Words": "words"},
+        {"hasWords": ["true", "false"]},
+        {"hasTitles": ["true", "false"]},
+        {"hasSeats": ["true", "false"]},
+        {"hasDiedOut": ["true", "false"]},
+        {"hasAncestralWeapons": ["true", "false"]},
+]
+
+const search = [
+      "Name",
+      "Region",
+      "Words",
+      "HasWords",
+      "HasNoWords",
+      "HasTitles",
+      "HasNoTitles",
+      "HasSeats",
+      "HasNoSeats",
+      "HasDiedOut",
+      "HasNotDiedOut",
+      "HasAncestralWeapons",
+      "HasNoAncestralWeapons"
+]
 
 
 function NavHead() {
@@ -19,10 +47,12 @@ function NavHead() {
             Search-by
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">HasTittles</a></li>
-            <li><a className="dropdown-item" href="#">NoTittles</a></li>
-            <li><hr className="dropdown-divider" /></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            {search.map((val, index)=>{
+                return (
+                 <NavEntry item = {val}  key = {index}/>
+                );
+            })}
+            
           </ul>
         </li>
        
