@@ -1,6 +1,7 @@
 import React, { useState} from "react"
 import  NavEntry  from './NavEntry';
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 
 
@@ -33,7 +34,7 @@ function NavHead({query,setSearchKey, onSearch, onSetOption, onSetName}) {
     <>
       <nav className="navbar navbar-expand-lg bg-dark justify-content-end">
   <div className="container-fluid text-white">
-    <a className="navbar-brand text-white" href="#">Game-Of-Throne</a>
+    <Link className="navbar-brand text-white" to="/">Game-Of-Throne</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" 
     >
