@@ -1,12 +1,15 @@
-import React, { useEffect } from "react"
+import React, { useState} from "react"
 import  NavEntry  from './NavEntry';
 import Axios from "axios";
 
+
+
+
 const searchOptions = [
-        {"Name": "name"},
-        {"Region": "region"},
-        {"Words": "words"},
-        {"hasWords": ["true", "false"]},
+        {"Name": "http://localhost:8080/api/v1/houses/name"},
+        {"Region": "http://localhost:8080/api/v1/houses/region"},
+        {"Words": "http://localhost:8080/api/v1/houses/words"},
+        {"hasWords": "http://localhost:8080/api/v1/houses/words"},
         {"hasTitles": ["true", "false"]},
         {"hasSeats": ["true", "false"]},
         {"hasDiedOut": ["true", "false"]},
@@ -29,18 +32,11 @@ const search = [
       "HasNoAncestralWeapons"
 ]
  
-async function handleSubmit(e){
-  e.preventDefault();
-  try{
-   await Axios.get('http://localhost:8080/api/v1/houses/78', {name:"test"});
-   console.log("request submited");
-  }catch(e){
-
-  }
-}
 
 
-function NavHead() {
+
+function NavHead({query,setSearchKey, onSearch}) {
+
 
   return (
     <>
@@ -62,7 +58,7 @@ function NavHead() {
           <ul className="dropdown-menu">
             {search.map((val, index)=>{
                 return (
-                 <NavEntry item = {val}  key = {index}/>
+                 <NavEntry item = {val}  key = {index} />
                 );
             })}
             
@@ -70,8 +66,10 @@ function NavHead() {
         </li>
        
       </ul>
-      <form className="d-flex" role="search" onSubmit={handleSubmit}>
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+      <form className="d-flex" role="search" onSubmit={e=>onSearch(e)} >
+        <input className="form-control me-2" type="search" placeholder="Search" value={query} 
+        aria-label="Search"  name = "searchKey" onChange={e => setSearchKey(e.target.value)}
+        />
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
