@@ -58,7 +58,7 @@ function NavHead({query,setSearchKey, onSearch, onSetOption, onSetName}) {
        
       </ul>
       <form className="d-flex" role="search" onSubmit={e=>onSearch(e)} >
-        <input className="form-control me-2" type="search" placeholder="Search"  
+        <input className="form-control me-2" type="search" placeholder="Search By:"  
         aria-label="Search"  name = "searchKey" onChange={e => setSearchKey(e.target.value)}
         />
         <button className="btn btn-outline-success" type="submit">Search</button>

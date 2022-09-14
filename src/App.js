@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Axios from 'axios';
-import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import NavHead from './component/NavHead';
 import Houses from './component/Houses';
 import SingleHouse from './component/SingleHouse';
@@ -10,6 +10,7 @@ const [houses, setHouses] = useState([]);
 const [searchKey, setSearchKey] = useState();
 const [option, setOption] = useState();
 const [name, setName] = useState();
+
 
 const urlNames = {
                   "Name":"name",
@@ -30,6 +31,7 @@ const urlNames = {
 
 
 async function handleSubmit(e){
+  <Navigate to="/" />
   e.preventDefault();
   try{
     const params = new URLSearchParams([[urlNames[name],searchKey]])
@@ -50,8 +52,8 @@ async function handleSubmit(e){
       onSetOption={setOption} onSetName={setName}
       />
         <Routes>
-           <Route path="/" element = { <Houses data={houses} />} />
-           <Route path ="/45" element = { <SingleHouse /> } />
+           <Route path="/" element={ <Houses data={houses} />} />
+           <Route path ="/house/:id" element={ <SingleHouse /> } />
         </Routes>
     
     </BrowserRouter>

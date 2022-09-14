@@ -1,34 +1,38 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
+import {useLocation} from 'react-router-dom'
+import Axios from "axios"
 import HouseDetails from "./HouseDetails"
 import HouseSubDetails from "./HouseSubDetails"
 
-const house =  {"id": "78",
-"name": "House Condon",
-"region": "The North",
-"coatOfArms": "An eagle's head between crossed tridents, red on white",
-"words": "",
-"titles": [
-    ""
-],
-"seats": [
-    ""
-],
-"currentLord": "",
-"heir": "",
-"overlord": "https://anapioficeandfire.com/api/houses/66",
-"founded": "",
-"diedOut": "",
-"ancestralWeapons": [
-    ""
-],
-"cadetBranches": [],
-"swornMembers": [
-    "https://anapioficeandfire.com/api/characters/607"
-]
-}
 
 
-function SingleHouse() {
+
+ function SingleHouse(props) {
+    const [house, setHouse] =useState({});
+    const location = useLocation();
+    console.log(props, location);
+    const getLastItem = thePath => thePath.substring(thePath.lastIndexOf('/') + 1);
+    const houseId = getLastItem(location?.pathname);
+    
+    async function fetchSingleHouse(){
+
+        try{
+            
+            await Axios.get("http://localhost:8080/api/v1/houses/"+houseId ).then(resp=>{
+                setHouse(resp.data);
+                
+            });
+        }catch(e){
+    
+        }
+    }
+
+    useEffect(()=>{
+        fetchSingleHouse()
+
+    }, [])
+   
+   
   return (
     <>
       <div className="container">
@@ -42,28 +46,28 @@ function SingleHouse() {
         <div className="row"> 
            <div className="col"> 
            <h4>Titles</h4> 
-           {house.titles.map((val)=>{
-              return <HouseSubDetails element = {val} />
+           {house.titles?.map((val, index)=>{
+              return <HouseSubDetails element = {val} key = {index}/>
            })}
            </div>
            <div className="col"> 
            <h4>Seats</h4> 
-           {house.seats.map((val)=>{
-              return <HouseSubDetails element = {val} />
+           {house?.seats?.map((val, index)=>{
+              return <HouseSubDetails element = {val} key={index}/>
            })}
            </div>
         </div>
         <div className="row"> 
            <div className="col"> 
            <h4>Ancestral Weapons</h4> 
-           {house.ancestralWeapons.map((val)=>{
-              return <HouseSubDetails element = {val} />
+           {house?.ancestralWeapons?.map((val, index)=>{
+              return <HouseSubDetails element = {val} key={index}/>
            })}
            </div>
            <div className="col"> 
            <h4>Cadet Branches</h4> 
-           {house.cadetBranches.map((val)=>{
-              return <HouseSubDetails element = {val} />
+           {house?.cadetBranches?.map((val, index)=>{
+              return <HouseSubDetails element = {val}  key={index}/>
            })}
            </div>
         </div>
@@ -71,8 +75,8 @@ function SingleHouse() {
         <div className="row"> 
            <div className="col"> 
            <h4>Sworn Members</h4> 
-           {house.swornMembers.map((val)=>{
-              return <HouseSubDetails element = {val} />
+           {house?.swornMembers?.map((val, index)=>{
+              return <HouseSubDetails element = {val} key={index} />
            })}
            </div>
            

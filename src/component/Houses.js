@@ -3,7 +3,6 @@ import House from "./House";
 
 
 function Houses({data}) {
-    console.log(data)
   return (
     <>
     <div className="container">
@@ -12,8 +11,8 @@ function Houses({data}) {
 
 {
     data.length===0?<div>No houses to display</div>:
-    data.map((house)=>{
-    return <House name = {house.name} region = {house.region} words = {house.words} key = {house.id} />;
+    data.map((house, index)=>{
+    return <House name = {house.name} region = {house.region} words = {house.words} key = {index}  id={house.id}/>;
 })}
 </div>
 </div>
