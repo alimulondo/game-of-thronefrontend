@@ -5,16 +5,7 @@ import Axios from "axios";
 
 
 
-const searchOptions = [
-        {"Name": "http://localhost:8080/api/v1/houses/name"},
-        {"Region": "http://localhost:8080/api/v1/houses/region"},
-        {"Words": "http://localhost:8080/api/v1/houses/words"},
-        {"hasWords": "http://localhost:8080/api/v1/houses/words"},
-        {"hasTitles": ["true", "false"]},
-        {"hasSeats": ["true", "false"]},
-        {"hasDiedOut": ["true", "false"]},
-        {"hasAncestralWeapons": ["true", "false"]},
-]
+
 
 const search = [
       "Name",
@@ -35,7 +26,7 @@ const search = [
 
 
 
-function NavHead({query,setSearchKey, onSearch}) {
+function NavHead({query,setSearchKey, onSearch, onSetOption, onSetName}) {
 
 
   return (
@@ -58,7 +49,7 @@ function NavHead({query,setSearchKey, onSearch}) {
           <ul className="dropdown-menu">
             {search.map((val, index)=>{
                 return (
-                 <NavEntry item = {val}  key = {index} />
+                 <NavEntry item = {val}  key = {index} settingOption={onSetOption} settingName={onSetName}/>
                 );
             })}
             
@@ -67,7 +58,7 @@ function NavHead({query,setSearchKey, onSearch}) {
        
       </ul>
       <form className="d-flex" role="search" onSubmit={e=>onSearch(e)} >
-        <input className="form-control me-2" type="search" placeholder="Search" value={query} 
+        <input className="form-control me-2" type="search" placeholder="Search"  
         aria-label="Search"  name = "searchKey" onChange={e => setSearchKey(e.target.value)}
         />
         <button className="btn btn-outline-success" type="submit">Search</button>

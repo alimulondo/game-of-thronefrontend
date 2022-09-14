@@ -8,18 +8,36 @@ import SingleHouse from './component/SingleHouse';
 function App() {
 const [houses, setHouses] = useState([]);
 const [searchKey, setSearchKey] = useState();
+const [option, setOption] = useState();
+const [name, setName] = useState();
+
+const urlNames = {
+                  "Name":"name",
+                  "Region":"region",
+                  "Words":"words",
+                  "HasWords":"status",
+                  "HasNoWords":"status",
+                  "HasTitles":"status",
+                  "HasNoTitles":"status",
+                  "HasSeats":"status",
+                  "HasNoSeats":"status",
+                  "HasDiedOut":"status",
+                  "HasNotDiedOut":"status",
+                  "HasAncestralWeapons":"status",
+                  "HasNoAncestralWeapons":"status"
+
+                }
 
 
 async function handleSubmit(e){
   e.preventDefault();
   try{
-    await Axios.get('http://localhost:8080/api/v1/houses/name', {
-          params:{name:searchKey}
+    const params = new URLSearchParams([[urlNames[name],searchKey]])
+    await Axios.get(option, {
+          params
    }).then(resp=>{
     setHouses(resp.data);
-    console.log(resp);
    })
-   console.log("Request Submitted");
   }catch(e){
 
   }
@@ -28,7 +46,9 @@ async function handleSubmit(e){
 
     <>
     <BrowserRouter>
-      <NavHead  query={searchKey} setSearchKey={setSearchKey} onSearch={handleSubmit}/>
+      <NavHead  query={searchKey} setSearchKey={setSearchKey} onSearch={handleSubmit} 
+      onSetOption={setOption} onSetName={setName}
+      />
         <Routes>
            <Route path="/" element = { <Houses data={houses} />} />
            <Route path ="/45" element = { <SingleHouse /> } />
