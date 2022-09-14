@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import  NavEntry  from './NavEntry';
+import Axios from "axios";
 
 const searchOptions = [
         {"Name": "name"},
@@ -27,6 +28,16 @@ const search = [
       "HasAncestralWeapons",
       "HasNoAncestralWeapons"
 ]
+ 
+async function handleSubmit(e){
+  e.preventDefault();
+  try{
+   await Axios.get('http://localhost:8080/api/v1/houses/78', {name:"test"});
+   console.log("request submited");
+  }catch(e){
+
+  }
+}
 
 
 function NavHead() {
@@ -36,7 +47,9 @@ function NavHead() {
       <nav className="navbar navbar-expand-lg bg-dark justify-content-end">
   <div className="container-fluid text-white">
     <a className="navbar-brand text-white" href="#">Game-Of-Throne</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" 
+    >
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -57,7 +70,7 @@ function NavHead() {
         </li>
        
       </ul>
-      <form className="d-flex" role="search">
+      <form className="d-flex" role="search" onSubmit={handleSubmit}>
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
